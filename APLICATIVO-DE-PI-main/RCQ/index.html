@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de RCQ</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+        <h2>Calculadora da relação cintura-quadril</h2>
+        <form id="imc-form"></form>
+          <div class="form-inputs">
+            <div class="form-control">
+              <label for="waist">Tamanho da Cintura (2 dedos acima do <br> umbigo):</label>
+              <input type="number" id="cintura" placeholder="Ex:90" required>
+            </div>
+            <div class="form-control">
+              <label for="weight">Tamanho do Quadril (medir na parte mais<br> larga do quadril):</label>
+              <input type="number" id="quadril" placeholder="Ex:105" required>
+            </div>
+          </div>
+          <div class="action-control">
+            <button onclick="calcularRCQ()" id="calc-btn">Calcular</button>
+            <button id="clear-btn" type="reset">Limpar</button>
+          </div><br><br>
+          <p id="resultado"></p>
+        </form>
+      </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    
+  </body>
+</html>

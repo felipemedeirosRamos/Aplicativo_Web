@@ -1,0 +1,78 @@
+body{
+    font-family:arial;
+    margin:0px;
+    
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+    background-color: #0072BF;
+}
+nav li{
+    display: inline-block;
+}
+nav li a{
+    display: inline-block;
+    color:white;
+    text-decoration: none;
+    padding: 14px;
+}
+nav li a:hover{
+    background-color: #00548F;
+}
+.dropdown-menu{
+    position: absolute;
+    box-shadow: 0 0 2px black;
+    display: none;
+   
+}
+.dropdown-menu a{
+    display: block;
+    color:black;
+    background-color: white;
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+h1{
+    font-size: 42px;
+
+}
+.peito{
+    border:1px solid #000;
+    padding:10px;
+    margin:10px;
+    background-color: #fafafa;
+    box-shadow: 0 2px 2px -2px grey;
+    border:0px;
+}
+.ombro{
+    border:1px solid #000;
+    padding:10px;
+    margin:10px;
+    background-color: #fafafa;
+    box-shadow: 0 2px 2px -2px grey;
+    border:0px;
+}
+.triceps{
+    border:1px solid #000;
+    padding:10px;
+    margin:10px;
+    background-color: #fafafa;
+    box-shadow: 0 2px 2px -2px grey;
+    border:0px;
+}
+.treinos{
+    margin-left:50px;
+  
+}
+h2{
+    color:#cd3737;
+}
+.legend{
+    font-size:20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

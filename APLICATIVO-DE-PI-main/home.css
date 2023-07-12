@@ -1,0 +1,40 @@
+body{
+    font-family:arial;
+    margin:0px;
+    
+}
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+    background-color: #0072BF;
+}
+nav li{
+    display: inline-block;
+}
+nav li a{
+    display: inline-block;
+    color:white;
+    text-decoration: none;
+    padding: 14px;
+}
+nav li a:hover{
+    background-color:white;
+    color:white;
+}
+.dropdown-menu{
+    position: absolute;
+    box-shadow: 0 0 2px black;
+    display: none;
+   
+}
+.dropdown-menu a{
+    display: block;
+    color:black;
+    background-color: white;
+}
+.dropdown:hover .dropdown-menu{
+    display: block;
+}

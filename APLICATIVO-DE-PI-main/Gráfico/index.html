@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Evolução do Peso</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"],
+        input[type="date"] {
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007BFF;
+            color: #fff;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            font-weight: bold;
+            background-color: #f5f5f5;
+        }
+
+        #grafico {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Evolução do Peso</h2>
+
+    <label for="peso">Peso (kg):</label>
+    <input type="number" id="peso" step="0.01"><br>
+
+    <label for="data">Data:</label>
+    <input type="date" id="data"><br>
+
+    <button onclick="adicionarDados()">Adicionar Dados</button>
+
+    <h3>Registro de Peso</h3>
+    <table>
+        <tr>
+            <th>Data</th>
+            <th>Peso (kg)</th>
+        </tr>
+        <tbody id="registroPeso">
+        </tbody>
+    </table>
+
+    <canvas id="grafico"></canvas>
+
+    <script>
+        var dadosPeso = [];
+
+        function adicionarDados() {
+            var peso = parseFloat(document.getElementById('peso').value);
+            var data = document.getElementById('data').value;
+
+            if (!isNaN(peso) && data !== "") {
+                dadosPeso.push({ peso: peso, data: data });
+                exibirRegistroPeso();
+                criarGrafico();
+                limparCampos();
+            } else {
+                alert('Por favor, insira um peso e uma data válidos.');
+            }
+        }
+
+        function exibirRegistroPeso() {
+            var registroPeso = document.getElementById('registroPeso');
+            registroPeso.innerHTML = "";
+
+            for (var i = 0; i < dadosPeso.length; i++) {
+                var linha = document.createElement('tr');
+
+                var colunaData = document.createElement('td');
+                colunaData.textContent = dadosPeso[i].data;
+                linha.appendChild(colunaData);
+
+                var colunaPeso = document.createElement('td');
+                colunaPeso.textContent = dadosPeso[i].peso.toFixed(2) + " kg";
+                linha.appendChild(colunaPeso);
+
+                registroPeso.appendChild(linha);
+            }
+        }
+
+        function criarGrafico() {
+            var ctx = document.getElementById('grafico').getContext('2d');
+
+            var datas = dadosPeso.map(function (dados) {
+                return dados.data;
+            });
+
+            var pesos = dadosPeso.map(function (dados) {
+                return dados.peso;
+            });
+
+            var chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: datas,
+                    datasets:[
+                        {
+                            label: 'Evolução do Peso (kg)',
+                            data: pesos,
+                            backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                            borderColor: 'rgba(0, 123, 255, 1)',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Data'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Peso (kg)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function limparCampos() {
+            document.getElementById('peso').value = "";
+            document.getElementById('data').value = "";
+        }
+    </script>
+</body>
+</html>
